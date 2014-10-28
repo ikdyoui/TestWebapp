@@ -5,6 +5,7 @@ requires 'Amon2::Web::Dispatcher::RouterBoom';
 requires 'Crypt::CBC';
 requires 'Crypt::Rijndael';
 requires 'DBI';
+requires 'DBD::Pg';
 requires 'File::ShareDir';
 requires 'Getopt::Long';
 requires 'HTTP::Session2::ClientStore2';

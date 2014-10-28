@@ -1,0 +1,25 @@
+#!perl
+#carton exec perl -Ilib script/teng-schema-dumper > ./lib/Sample/DB/Schema.pm
+
+use strict;
+use warnings;
+use DBI;
+use Teng::Schema::Dumper;
+
+my $dbname = 'testwebapp_dev';
+my $host   = '127.0.0.1';
+my $port   = '5432';
+my $user   = 'postgres';
+my $pass   = 'postgres';
+my $class  = 'TestWebapp::DB';
+
+my $inflate = +{
+};
+
+my $dbh = DBI->connect("dbi:Pg:dbname=$dbname;host=$host;port=$port", $user, $pass) or die;
+print Teng::Schema::Dumper->dump(
+        dbh            => $dbh,
+        namespace      => $class,
+        base_row_class => $class . '::Row',
+        inflate        => $inflate,
+        );
