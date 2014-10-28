@@ -1,0 +1,3 @@
+name="TestWebapp"
+[build]
+build_class = "builder::MyBuilder"
