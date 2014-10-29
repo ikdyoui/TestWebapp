@@ -15,6 +15,7 @@ my $host = '127.0.0.1';
 my $port = '5432';
 my $user = 'postgres';
 my $pass = 'postgres';
+print "dev\n";
 +{
     'DBI' => [
         "dbi:Pg:dbname=$dbname;host=$host;port=$port", $user, $pass,
