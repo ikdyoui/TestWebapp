@@ -20,3 +20,4 @@ my ($user, $pass) = split /:/, $uri->userinfo;
         "dbi:Pg:dbname=$dbname;host=$host;port=$port", $user, $pass,
     ],
 };
+
