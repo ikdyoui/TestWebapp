@@ -14,7 +14,7 @@ my $dbname = substr($uri->path, 1);
 my ($user_pass, $host_port) = split /@/, $uri->authority;
 my ($user, $pass) = split /:/, $user_pass;
 my ($$host, $port) = split /:/, $host_port;
-my ($user2, $pass2) = split /:/, $uri->userinfo;
+# my ($user2, $pass2) = split /:/, $uri->userinfo;
 
 +{
     'DBI' => [
