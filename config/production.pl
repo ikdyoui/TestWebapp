@@ -3,7 +3,7 @@ use URI;
 my $url;
 for my $e (keys %ENV) {
     if ($e eq 'DATABASE_URL') {
-        $url = $e;
+        $url = $ENV{$e};
     }
 }
 exit unless $url;
