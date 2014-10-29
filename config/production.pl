@@ -1,12 +1,22 @@
-use File::Spec;
-use File::Basename qw(dirname);
-my $basedir = File::Spec->rel2abs(File::Spec->catdir(dirname(__FILE__), '..'));
-my $dbpath = File::Spec->catfile($basedir, 'db', 'production.db');
+use URI;
+
+my $url;
+for my $e (keys %ENV) {
+    if ($e eq 'DATABASE_URL') {
+        $url = $e;
+    }
+}
+exit unless $url;
+
+my $uri = URI->new($url);
+
+my $dbname = substr($uri->path, 1);
+my $host = $uri->host;
+my $port = $uri->port;
+my ($user, $pass) = split /:/, $uri->userinfo;
+
 +{
     'DBI' => [
-        "dbi:SQLite:dbname=$dbpath", '', '',
-        +{
-            sqlite_unicode => 1,
-        }
+        "dbi:Pg:dbname=$dbname;host=$host;port=$port", $user, $pass,
     ],
 };
